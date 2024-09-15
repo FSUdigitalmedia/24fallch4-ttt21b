@@ -1,43 +1,79 @@
-let y = 0; 
+let Font; // create the variable first
+let c; // color of the text
+let x = 0;
 let speed = 3;
-let deg = 0;
+let y = 0;
 
-function setup() {
-  createCanvas(400, 400);
-  rectMode(CENTER)
+
+
+//preload comes before setup, more faster
+function preload() {
+  Font = loadFont("assets/PPTelegraf-Regular.otf"); // add quotes or it wont work
 }
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+textFont(Font); // sets the font, textFont is the function
+textSize(100);
+colorMode(HSB); // changes the color mode from rgb to hsb
 
+}
+//to get picture in, make sure the resolution is right or it will be slow
 function draw() {
   background(10);
+  
+  //let bbox = Font.textBounds('chameleon', windowWidth/2, windowHeight/2); 
+  // add the font variable before .textBounds
+ // rect(bbox.x, bbox.y, bbox.w, bbox.h); // draws box around text, 
+  //think of bounding box as guiding lines for the text
 
-// change color based on vert mouse position
+  let xPos = map(x, 0, windowWidth/1.7, 0, windowWidth/1.7, EXPONENTIAL, IN);
+  //sticks to the right side after adding any of the constants, idk why
+  // initial variable of x, set from 0 to winWidth, new mapped to new coords
+  x = x + speed
 
-  let startingColor = color("green");
-  let endingColor = color("pink");
-  let pct = map(mouseY, 0, height, 0, 1, true);
-  let clr = lerpColor(startingColor,endingColor,pct);
-  fill(clr);
+  if (x > windowWidth || x < 0) {
+    speed = speed * -1;
+  }
+  
 
-
-  // draw circle based on mouse
-let d = map(mouseX, 0, width, 50, 150, true);
-let yPos = map2(y, 0, height, 0, height, SINUSOIDAL, IN);
-circle(width/2, yPos, d);
-
-if (y > height || y < 0) {
+let yPos = windowHeight/2;
+  
+if (yPos > windowHeight || x < 0) {
   speed = speed * -1;
 }
 
-y = y + speed;
-
-//rotating rectangle
-push();
-translate(100,100);
-rotate (radians(deg));
-deg = (deg + 1) % 360 
-rect(0, 0, 50, 20);
-pop();
+  text("sticky chameleon", xPos, yPos);
 
 
-console.log(d);
+
+
+ 
+ // if (x > )
+
+ console.log(x);
+
+  
+  
+
+
+  //for these parts i looked up how to get color shifts in p5 but i think i get it
+  h = map(mouseX, 0, windowWidth, -30, 300); // h is hue
+  c = color(h, map(mouseY, 0, windowHeight, 100, 20), 100); // c is color
+  fill(c);
+
+
 }
+// not working
+function keyPressed () {
+  if (key === 's') {
+    yPos = y - 10;
+  } else if (key === 'w') {
+    yPos = y + 10;
+  }
+  
+}
+
+
+
+
+
