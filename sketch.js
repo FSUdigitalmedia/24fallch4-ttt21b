@@ -1,7 +1,7 @@
 let Font; // create the variable first
 let c; // color of the text
 let x = 0;
-let speed = 3;
+let speed = 10;
 let y = 0;
 
 
@@ -26,13 +26,13 @@ function draw() {
  // rect(bbox.x, bbox.y, bbox.w, bbox.h); // draws box around text, 
   //think of bounding box as guiding lines for the text
 
-  let xPos = map(x, 0, windowWidth/1.7, 0, windowWidth/1.7);
+  let xPos = map2(x, 0, windowWidth/1.7, 0, windowWidth/1.7, QUADRATIC, IN); // map2 is different from just map
   //sticks to the right side after adding any of the constants, idk why
   // initial variable of x, set from 0 to winWidth, new mapped to new coords
   x = x + speed
 
   if (x > windowWidth/1.7 || x < 0) {
-    speed = x * -1;
+    speed = speed * -1;
   }
   
 
@@ -42,7 +42,7 @@ if (yPos > windowHeight || x < 0) {
   speed = speed * -1;
 }
 
-  text("zooming chameleon", xPos, yPos);
+  text("rubber chameleon", xPos, yPos);
 
 
 
