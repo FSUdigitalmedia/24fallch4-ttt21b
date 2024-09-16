@@ -26,13 +26,13 @@ function draw() {
  // rect(bbox.x, bbox.y, bbox.w, bbox.h); // draws box around text, 
   //think of bounding box as guiding lines for the text
 
-  let xPos = map(x, 0, windowWidth/1.7, 0, windowWidth/1.7, EXPONENTIAL, IN);
+  let xPos = map(x, 0, windowWidth/1.7, 0, windowWidth/1.7);
   //sticks to the right side after adding any of the constants, idk why
   // initial variable of x, set from 0 to winWidth, new mapped to new coords
   x = x + speed
 
-  if (x > windowWidth || x < 0) {
-    speed = speed * -1;
+  if (x > windowWidth/1.7 || x < 0) {
+    speed = x * -1;
   }
   
 
@@ -42,7 +42,7 @@ if (yPos > windowHeight || x < 0) {
   speed = speed * -1;
 }
 
-  text("sticky chameleon", xPos, yPos);
+  text("zooming chameleon", xPos, yPos);
 
 
 
