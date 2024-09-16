@@ -21,7 +21,7 @@ colorMode(HSB); // changes the color mode from rgb to hsb
 function draw() {
   background(10);
   
-  //let bbox = Font.textBounds(' rubber chameleon', windowWidth/1.7, windowHeight/1.7); 
+  //let bbox = Font.textBounds(' battering ram', windowWidth/1.7, windowHeight/1.7); 
   // add the font variable before .textBounds
  // rect(bbox.x, bbox.y, bbox.w, bbox.h); // draws box around text, 
   //think of bounding box as guiding lines for the text
@@ -31,18 +31,18 @@ function draw() {
   // initial variable of x, set from 0 to winWidth, new mapped to new coords
   x = x + speed
 
-  if (x > windowWidth/1.7 || x < 0) {
+  if (x > windowWidth/1.5 || x < 0) {
     speed = speed * -1;
-  } // this is prolly where the issue is
+  } // nvm turns out i had 2 lines of speed
   
 
-let yPos = windowHeight/2;
+let yPos = windowHeight/2; // uhhh cant this out/ or move it to global without it breaking
   
 if (yPos > windowHeight || x < 0) {
-  speed = speed * -1;
+  
 }
 
-  text("rubber chameleon", xPos, yPos);
+  text("rainbow ram", xPos, yPos);
 
 
 
