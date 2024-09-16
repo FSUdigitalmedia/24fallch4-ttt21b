@@ -21,7 +21,7 @@ colorMode(HSB); // changes the color mode from rgb to hsb
 function draw() {
   background(10);
   
-  //let bbox = Font.textBounds('chameleon', windowWidth/2, windowHeight/2); 
+  //let bbox = Font.textBounds(' rubber chameleon', windowWidth/1.7, windowHeight/1.7); 
   // add the font variable before .textBounds
  // rect(bbox.x, bbox.y, bbox.w, bbox.h); // draws box around text, 
   //think of bounding box as guiding lines for the text
@@ -33,7 +33,7 @@ function draw() {
 
   if (x > windowWidth/1.7 || x < 0) {
     speed = speed * -1;
-  }
+  } // this is prolly where the issue is
   
 
 let yPos = windowHeight/2;
